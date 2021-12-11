@@ -267,10 +267,18 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 			cout << "Out of Network" << endl << endl;
 			dataWatch();
 
-			if (blacklist.checkBlackListIPv4(packet.ip4Header->daddr) || blacklist.checkBlackListIPv4(packet.ip4Header->saddr))
+			if (blacklist.checkBlackListIPv4(packet.ip4Header->saddr))
 			{//this checks against the IPv4 blacklist, if it violates the blacklist we want an email sent saying there was a violation, its nested in the
 				//network check loop as any in network traffic will not violate the blacklist so this shouldn't be done if not necessary.
 				cout << "BlackList violation email sent";
+				resolveAddress(IPaddressToString(packet.ip4Header->saddr));
+				pcap_breakloop(adhandle);//breaks the packet sniffer.
+			}
+			else if (blacklist.checkBlackListIPv4(packet.ip4Header->daddr))
+			{//this checks against the IPv4 blacklist, if it violates the blacklist we want an email sent saying there was a violation, its nested in the
+				//network check loop as any in network traffic will not violate the blacklist so this shouldn't be done if not necessary.
+				cout << "BlackList violation email sent";
+				resolveAddress(IPaddressToString(packet.ip4Header->daddr));
 				pcap_breakloop(adhandle);//breaks the packet sniffer.
 			}
 		}
@@ -302,9 +310,16 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 			cout << "Out of Network" << endl << endl;
 			dataWatch();
 
-			if (blacklist.checkBlackListIPv6(packet.ip6Header->saddr) || blacklist.checkBlackListIPv6(packet.ip6Header->daddr))
+			if (blacklist.checkBlackListIPv6(packet.ip6Header->saddr))
 			{//check IPv6 blacklist on source and destination addresses.
 				cout << "BlackList violation email sent";
+				resolveAddress(IP6addressToString(SourceIP));
+				pcap_breakloop(adhandle);
+			}
+			else if (blacklist.checkBlackListIPv6(packet.ip6Header->daddr))
+			{//check IPv6 blacklist on source and destination addresses.
+				cout << "BlackList violation email sent";
+				resolveAddress(IP6addressToString(DestinationIP));
 				pcap_breakloop(adhandle);
 			}
 		}

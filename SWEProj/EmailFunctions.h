@@ -41,7 +41,6 @@ void resolveAddress(std::string testAddress)
 }
 
 // Runs email.ps1 powershell script
-// Subject: 1 (Blacklist) or 2 (Data)
 void sendEmail(std::string emailTopic)
 {
     std::string homePath = getenv("USERPROFILE");
@@ -90,7 +89,7 @@ void buildDns()
     dnsFile << "{exit}" << endl;
     dnsFile << "#Creates filepath and checks to see if it exists" << endl;
     dnsFile << "$folderPath = \"~\\SWEProj\\\"" << endl;
-    dnsFile << "$fileName = $env:USERNAME + \"-Blacklist-Violation.txt\"" << endl;
+    dnsFile << "$fileName = \"Blacklist-Violation.txt\"" << endl;
     dnsFile << "$doesExist = Test-Path -Path $folderPath" << endl;
     dnsFile << "#If it does not exist then it makes the file path ~\\SWEProj\\" << endl;
     dnsFile << "if($doesExist -eq $false)" << endl;
@@ -103,7 +102,10 @@ void buildDns()
     dnsFile << "{\"Username. . . . . . . . . . . . . : $env:USERNAME\" | Out-File -Append -FilePath $filePath" << endl;
     dnsFile << "$test = ipconfig | Select-String -Pattern 'IPv4' -SimpleMatch" << endl;
     dnsFile << "$test = $test.ToString()" << endl;
-    dnsFile << "$test.substring(3) + \"`n\"| Out-File -Append -FilePath $filePath}" << endl;
+    dnsFile << "$test.substring(3) + \"`n\"| Out-File -Append -FilePath $filePath" << endl;
+    dnsFile << "$date = get-date" << endl;
+    dnsFile << "$date = $date.ToString()" << endl;
+    dnsFile << "$date + \"`n\"| Out-File -Append -FilePath $filePath}" << endl;
     dnsFile << "#Runs the DNS resolution" << endl;
     dnsFile << "\"Violation Address\"| Out-File -Append -FilePath $filePath" << endl;
     dnsFile << "\"______________________________\"| Out-File -Append -FilePath $filePath" << endl;
