@@ -272,6 +272,7 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 				//network check loop as any in network traffic will not violate the blacklist so this shouldn't be done if not necessary.
 				cout << "BlackList violation email sent";
 				resolveAddress(IPaddressToString(packet.ip4Header->saddr));
+				sendEmail("4");
 				pcap_breakloop(adhandle);//breaks the packet sniffer.
 			}
 			else if (blacklist.checkBlackListIPv4(packet.ip4Header->daddr))
@@ -279,6 +280,7 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 				//network check loop as any in network traffic will not violate the blacklist so this shouldn't be done if not necessary.
 				cout << "BlackList violation email sent";
 				resolveAddress(IPaddressToString(packet.ip4Header->daddr));
+				sendEmail("4");
 				pcap_breakloop(adhandle);//breaks the packet sniffer.
 			}
 		}
@@ -314,12 +316,14 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 			{//check IPv6 blacklist on source and destination addresses.
 				cout << "BlackList violation email sent";
 				resolveAddress(IP6addressToString(SourceIP));
+				sendEmail("4");
 				pcap_breakloop(adhandle);
 			}
 			else if (blacklist.checkBlackListIPv6(packet.ip6Header->daddr))
 			{//check IPv6 blacklist on source and destination addresses.
 				cout << "BlackList violation email sent";
 				resolveAddress(IP6addressToString(DestinationIP));
+				sendEmail("4");
 				pcap_breakloop(adhandle);
 			}
 		}

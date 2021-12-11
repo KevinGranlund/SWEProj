@@ -155,7 +155,8 @@ void buildEmail()
     emailFile << "$attachment = \"dataUsage.txt\"}" << endl;
 
     emailFile << "elseif($emailSwitch -eq 4)" << endl;
-    emailFile << "{$subject = \"Blacklist Violation for \" + $env:USERNAME" << endl;
+    emailFile << "{Start-Sleep -Seconds 1" << endl;
+    emailFile << "$subject = \"Blacklist Violation for \" + $env:USERNAME" << endl;
     emailFile << "$body = \"You have tried to access a blacklisted site. For Shame.\"" << endl;
     emailFile << "$attachment = \"Blacklist-Violation.txt\"}" << endl;
 
@@ -173,7 +174,6 @@ void buildEmail()
     emailFile << "Send-MailMessage -SmtpServer smtp.gmail.com -Port 587 -UseSsl -From testcat470@gmail.com -To testcat470@gmail.com -Subject $subject -Body $body -Credential $Credentials -Attachments $filePath -Priority High -DeliveryNotificationOption OnSuccess, OnFailure" << endl;
     emailFile << "#Email: testcat470@gmail.com Password: SWEProjCSC470 \"Blacklist-Violation.txt\" \"Data-Usage.txt\"" << endl;
 
-    //emailFile << "Start-Sleep -Seconds 10" << endl;
     //End of Powershell
 
     emailFile.close();
