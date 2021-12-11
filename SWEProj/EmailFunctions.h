@@ -184,36 +184,40 @@ void buildDataFiles()//note from Kevin, this function was rewritten so that it o
     LPCWSTR a, b, c;
     std::wstring temp = std::wstring(homePath.begin(), homePath.end());
     a = temp.c_str();
-    homePath = getenv("USERPROFILE");
-    homePath.append("\\SWEProj\\IP4blacklist.txt");
-    temp = std::wstring(homePath.begin(), homePath.end());
-    b = temp.c_str();
-    homePath = getenv("USERPROFILE");
-    homePath.append("\\SWEProj\\hostnames.txt");
-    temp = std::wstring(homePath.begin(), homePath.end());
-    c = temp.c_str();
-    homePath = getenv("USERPROFILE");
-    homePath.append("\\SWEProj\\");
-
-    ofstream dataUsage(homePath + "dataUsage.txt");
-    dataUsage.close();
-    if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(b))
-    {
-        ofstream ip4(homePath + "IP4blacklist.txt");
-        ip4.close();
-    }
-    if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(c))
-    {
-        ofstream hostnames(homePath + "hostnames.txt");
-        hostnames.close();
-    }
-    
     if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(a))
     {
         ofstream ip6(homePath + "IP6blacklist.txt");
         ip6 << "2a,03,28,80,f1,2f,00,83,fa,ce,b0,0c,00,00,25,de" << endl;
         ip6.close();
     }
+    homePath = getenv("USERPROFILE");
+    homePath.append("\\SWEProj\\IP4blacklist.txt");
+    temp = std::wstring(homePath.begin(), homePath.end());
+    b = temp.c_str();
+    if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(b))
+    {
+        ofstream ip4(homePath + "IP4blacklist.txt");
+        ip4.close();
+    }
+    
+    homePath = getenv("USERPROFILE");
+    homePath.append("\\SWEProj\\hostnames.txt");
+    temp = std::wstring(homePath.begin(), homePath.end());
+    c = temp.c_str();
+    if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(c))
+    {
+        ofstream hostnames(homePath + "hostnames.txt");
+        hostnames.close();
+    }
+    homePath = getenv("USERPROFILE");
+    homePath.append("\\SWEProj\\");
+
+    ofstream dataUsage(homePath + "dataUsage.txt");
+    dataUsage.close();
+    
+    
+    
+    
     
 }
 

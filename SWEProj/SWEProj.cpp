@@ -298,18 +298,20 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 
 		if ((networkCheckIP6(i6h->saddr) == 1) || (networkCheckIP6(i6h->daddr) == 1))
 		{
-			usedBytes += (long)header->len;
-			cout << "Out of Network" << endl << endl;
-			dataWatch();
-
 			if (blacklist.checkBlackListIPv6(packet.ip6Header->saddr) || blacklist.checkBlackListIPv6(packet.ip6Header->daddr))
 			{//check IPv6 blacklist on source and destination addresses.
 				cout << "BlackList violation email sent";
 				pcap_breakloop(adhandle);
 			}
+			usedBytes += (long)header->len;
+			cout << "Out of Network" << endl << endl;
+			dataWatch();
+
+			
 		}
 		else
 		{
+			
 			cout << "In Network" << endl << endl;
 		}
 
