@@ -188,7 +188,7 @@ void buildDataFiles()//note from Kevin, this function was rewritten so that it o
     a = temp.c_str();
     if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(a))
     {
-        ofstream ip6(homePath + "IP6blacklist.txt");
+        ofstream ip6(homePath);
         ip6 << "2a,03,28,80,f1,2f,00,83,fa,ce,b0,0c,00,00,25,de" << endl;
         ip6.close();
     }
@@ -198,7 +198,7 @@ void buildDataFiles()//note from Kevin, this function was rewritten so that it o
     b = temp.c_str();
     if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(b))
     {
-        ofstream ip4(homePath + "IP4blacklist.txt");
+        ofstream ip4(homePath);
         ip4.close();
     }
     
@@ -208,7 +208,7 @@ void buildDataFiles()//note from Kevin, this function was rewritten so that it o
     c = temp.c_str();
     if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(c))
     {
-        ofstream hostnames(homePath + "hostnames.txt");
+        ofstream hostnames(homePath);
         hostnames.close();
     }
     homePath = getenv("USERPROFILE");
