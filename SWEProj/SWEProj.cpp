@@ -132,8 +132,8 @@ std::string IP6addressToString(ip6_address address)//takes a ip6_address pulled 
 	return s;
 }
 
-int networkCheckIP4(ip_address testAddress, ip_address broadcastAddress, ip_address subnet)//returns 1 if out of network, returns 0 if in network, takes in local
 //information and a packet IPv4 address to check if the packet orginated in network.
+int networkCheckIP4(ip_address testAddress, ip_address broadcastAddress, ip_address subnet)//returns 1 if out of network, returns 0 if in network, takes in local
 {
 	int outNetwork = 0;
 
@@ -180,6 +180,7 @@ int networkCheckIP4(ip_address testAddress, ip_address broadcastAddress, ip_addr
 	return outNetwork;
 }
 
+// The first two bytes of an IPv6 address determine if it is public or private. The current convention is that FF00 will always start a public IPv6 address. This checks for that.
 int networkCheckIP6(ip6_address address)
 {
 	int outNetwork = 0;
