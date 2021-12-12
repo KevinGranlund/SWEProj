@@ -19,5 +19,5 @@ HOW TO USE:
     - Visual Studio 2019
     - In visual studio Configuration Manager is set to x86 architecture
     - File in VS -> Clone Repository ->https://github.com/kevingrandlund/SWEPROJ
-    ![image](https://github.com/KevinGranlund/SWEProj/tree/master/images/a1.jpg)
+    ![image](https://github.com/KevinGranlund/SWEProj/tree/master/images/A2.png)
 
