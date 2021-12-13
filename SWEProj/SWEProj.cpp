@@ -408,13 +408,23 @@ int main()
 	}
 
 	printf("Enter the interface number (1-%d):", i-1); //ask the user to enter the number for the interface we want to work on.
-	scanf_s("%d", &inum);//store the number in inum
+	while (!(cin >> inum))
+	{
+		cout << "ERROR: a number must be entered: ";
+		cin.clear();
+		cin.ignore(123, '\n');
+	}
 
 	while (inum < 1 || inum > i-1) // if the user entered 0 or less(not possible as a device in our list, or a number greater than the total number of interfaces
 	{
 		printf("\nInterface number out of range.\n");//you're outside the range of available interfaces
 		printf("Enter the interface number (1-%d):", (i-1));
-		scanf_s("%d", &inum); //ask again for the interface
+		while (!(cin >> inum))
+		{
+			cout << "ERROR: a number must be entered: ";
+			cin.clear();
+			cin.ignore(123, '\n');
+		}
 		
 	}
 	/* Jump to the selected adapter */
