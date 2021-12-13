@@ -12,6 +12,6 @@ class IP6Packet
 		TCPheader* TCPHeader;
 		int type;
 		std::string toString();
-		std::string HexDump();
+		std::string HexDump(const u_char* packetData);
 };
 

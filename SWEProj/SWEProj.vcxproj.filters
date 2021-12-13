@@ -30,6 +30,9 @@
     <ClCompile Include="BlackList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Hexdump.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Packet.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="ComparisonOperatorOverloads.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hexdump.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,3 +1,4 @@
+#include "Hexdump.h"
 #include "Packet.h"
 
 Packet::Packet(const u_char* packetData)
@@ -13,7 +14,11 @@ std::string Packet::toString()//to be implemented, might be useful for output to
 	return std::string();
 }
 
-std::string Packet::HexDump()//Wireshark does this, might be usefull.
+std::string Packet::HexDump(const u_char* packetData)//Wireshark does this, might be usefull.
 {
-	return std::string();
+	std::string dumpString;
+	Hexdump dump(packetData, 58);
+	dumpString = dump.str();
+	return dumpString;
+
 }
