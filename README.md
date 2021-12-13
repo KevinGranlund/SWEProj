@@ -33,7 +33,11 @@ HOW TO USE:
     - When reaches 100% cap allowance, the internet shuts down
     
   Contributors
+  
     Kevin Granlund
+    
     Steven Steinle
+    
     Patrick Pashke
+    
     Victor Balogun
