@@ -21,9 +21,6 @@ HOW TO USE:
     - File in VS -> Clone Repository ->https://github.com/kevingrandlund/SWEPROJ
     - Solution Explorer -> Select Properties of the SWEProj
 
-![A2](https://github.com/KevinGranlund/SWEProj/blob/master/images/A2.png)
-![A3](https://github.com/KevinGranlund/SWEProj/blob/master/images/A3.png)
-![A4](https://github.com/KevinGranlund/SWEProj/blob/master/images/A4.png)
 
   Functionalities:
   
