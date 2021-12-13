@@ -3,7 +3,7 @@
 SOFTWARE ENGINEERING 470 PROJECT 
 
 
-This project monitors bandwidth usage, with automated reporting, once banddiwth exceeds cap it sends 
+This program monitors bandwidth usage, with automated reporting, once banddiwth exceeds allowed cap it sends 
 email to the admin, it also restricts access to to blacklisted websites stored in text file
 
 
