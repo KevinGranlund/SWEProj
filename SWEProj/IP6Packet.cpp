@@ -1,6 +1,5 @@
 #include "Hexdump.h"
 #include "IP6Packet.h"
-#include <string>
 IP6Packet::IP6Packet(const u_char* packetData)
 {
 	ip6Header = (ip6_header*)(packetData + 14);//points to IPv6 header

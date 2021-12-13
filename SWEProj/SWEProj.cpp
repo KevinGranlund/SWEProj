@@ -260,6 +260,7 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 		std::cout << "\nDestination Address: " << IPaddressToString(packet.ip4Header->daddr);
 		std::cout << "\nSource Port: " << PortResolution(packet.TCPHeader->sport, packet.TCPHeader->sport2);
 		std::cout << "\nDestination Port: " << PortResolution(packet.TCPHeader->dport, packet.TCPHeader->dport2) << "\n";
+		std::cout << "Hex Dump of header:\n" << packet.HexDump(pkt_data) << endl;
 		//a check to see if IPv4 packet is in network, if it is add it to watched data, if not do not.
 		if ((networkCheckIP4(packet.ip4Header->saddr, user.getBroadcastIPAddress(), user.getSubnetAddress()) == 1) || (networkCheckIP4(packet.ip4Header->daddr, user.getBroadcastIPAddress(), user.getSubnetAddress()) == 1))
 		{
@@ -305,6 +306,9 @@ void packet_handler(u_char* param, const struct pcap_pkthdr* header, const u_cha
 		u_int dport = PortResolution(ihTCP->dport, ihTCP->dport2);
 		std::cout << "Source Port: " << sport << "\n";
 		std::cout << "Destination Port: " << dport << "\n";
+		std::cout << "Hex Dump of header:\n" << packet.HexDump(pkt_data) << endl;
+
+
 
 		if ((networkCheckIP6(i6h->saddr) == 1) || (networkCheckIP6(i6h->daddr) == 1))
 		{
