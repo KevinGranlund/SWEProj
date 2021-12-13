@@ -31,3 +31,9 @@ HOW TO USE:
     - For the selected interface, incoming packets is analyzed to check for whitelisted IP's
     - When user exceeds 75% of cap limit admin and user gets a notification email. 
     - When reaches 100% cap allowance, the internet shuts down
+    
+  Contributors
+    Kevin Granlund
+    Steven Steinle
+    Patrick Pashke
+    Victor Balogun
