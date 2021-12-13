@@ -4,7 +4,7 @@ SOFTWARE ENGINEERING 470 PROJECT
 
 
 This project monitors bandwidth usage, with automated reporting, once banddiwth exceeds cap it sends 
-email to the admin, it also restricts access to to whitelisted websites stored in text file
+email to the admin, it also restricts access to to blacklisted websites stored in text file
 
 
 HOW TO USE:
