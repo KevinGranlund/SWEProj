@@ -17,7 +17,7 @@ HOW TO USE:
   
     - Windows 10 OS
     - Visual Studio 2019
-    - In visual studio Configuration Manager is set to x86 architecture
+    - In visual studio Configuration Manager is set to x64 architecture
     - File in VS -> Clone Repository ->https://github.com/kevingrandlund/SWEPROJ
 ![A2](https://github.com/KevinGranlund/SWEProj/blob/master/images/A2.png)
 ![A3](https://github.com/KevinGranlund/SWEProj/blob/master/images/A3.png)
