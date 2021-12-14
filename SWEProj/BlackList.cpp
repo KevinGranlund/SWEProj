@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <regex>
 #include "ComparisonOperatorOverloads.h"
 using namespace std;
 
@@ -23,12 +24,18 @@ void BlackList::generateAddresses(UserInfo user)
 	ifstream infile;
 	string path = "C:\\Users\\" + user.getUserName() + "\\SWEProj\\IP4blacklist.txt";//dynamically create path to the black list using the UserName returned in UserInfo class
 	infile.open( path );
+	std::regex regex4("(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]),){3}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\x00\n"); // 4 bytes between 0 and 255 seperated by commas
 	while (infile)//read in the file, loop through it and take each individual number delimited by commas and put them into and IPv4 address
 	{
 		string s;
 		if (!getline(infile, s)) break;//read each row separately
 		istringstream ss(s);
 		vector<string> record;
+		if (!(std::regex_match(s, regex4))) {
+			cerr << "Invalid entry in ip6 blacklist";
+			exit(0);
+		}
+		//cout << s;
 		while (ss)
 		{
 			string s;
@@ -60,7 +67,7 @@ void BlackList::generateAddresses(UserInfo user)
 		{
 			string s;
 			if (!getline(ss, s)) break;
-			record.push_back(s);
+			record.push_back(s);	
 		}
 		this->hostNames.push_back(s);//push the string hostname onto a string vector to be checked against for the blacklist.
 	}
@@ -71,12 +78,18 @@ void BlackList::generateAddresses(UserInfo user)
 	infile.close();
 	path = "C:\\Users\\" + user.getUserName() + "\\SWEProj\\IP6blacklist.txt";//dynamically create path to the black list using the UserName returned in UserInfo class
 	infile.open(path);
+	std::regex regex("(([0-9a-f][0-9a-f][,]){15}[0-9a-f]{2})\x00\n");  // 16 bytes seperated by commas null terminated with a new line
 	while (infile)//read in the file, loop through it and take each individual byte in Hex format delimited by commas and put them into and IPv6 address
 	{
 		string s;
 		if (!getline(infile, s)) break;//each row should be a separate IPv6 address
 		istringstream ss(s);
 		vector<string> record;
+		if (!(std::regex_match(s, regex))) {
+			cerr << "Invalid entry in ip6 blacklist";
+			exit(0);
+		}
+	//	cout << s;
 		while (ss)
 		{
 			string s;
